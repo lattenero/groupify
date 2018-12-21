@@ -156,12 +156,8 @@ module Groupify
               end
             else
               members.each do |member|
-                member.group_memberships.in(groups: _base).each do |membership|
-                  membership.groups.delete(_base)
-                end
+                member.groups.destroy _base
               end
-
-              super(*members)
             end
           end
         end
